@@ -6597,9 +6597,9 @@ $(document).ready(function() {
 		<div class='gdlr-responsive-navigation dl-menuwrapper' id='gdlr-responsive-navigation'><button class='dl-trigger'>Open Menu</button><ul class='dl-menu gdlr-main-mobile-menu' id='menu-main-menu'>
 
 	<li class='menu-item menu-item-type-post_type'><a href='/'>Home</a></li>
-	<li class='menu-item menu-item-type-post_type'><a href='#'>Photo</a></li>
-	<li class='menu-item menu-item-type-post_type'><a href='#'>Painting</a></li>
-	<li class='menu-item menu-item-type-post_type'><a href='#'>Travel</a></li>
+	<li class='menu-item menu-item-type-post_type'><a href='/search/label/photo'>Photo</a></li>
+	<li class='menu-item menu-item-type-post_type'><a href='/search/label/painting'>Painting</a></li>
+	<li class='menu-item menu-item-type-post_type'><a href='/search/label/travel'>Travel</a></li>
 	<li class='menu-item menu-item-type-post_type'><a href='http://pointofsju.blogspot.cz/p/about-point-of-sju.html'>About</a></li>
 		 
 </ul></div>						
@@ -6617,11 +6617,11 @@ $(document).ready(function() {
 
 <li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='/'>Home</a></li>
 
-<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='#'>Photo</a></li>
+<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='/search/label/photo'>Photo</a></li>
 
-<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='#'>Painting</a></li>
+<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='/search/label/painting'>Painting</a></li>
 
-<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='#'>Travel</a></li>
+<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='/search/label/travel'>Travel</a></li>
 
 <li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='http://pointofsju.blogspot.cz/p/about-point-of-sju.html'>About</a></li>
 </ul></nav>	
@@ -7439,14 +7439,14 @@ removeRelatedDuplicates();printRelatedLabels(&#39;<data:post.url/>&#39;);
     <b:includable id='status-message'>
   <b:if cond='data:navMessage'>
   <div class='status-msg-wrap'>
-    <div class='status-msg-body'>
+    <!--div class='status-msg-body'>
       <data:navMessage/>
     </div>
     <div class='status-msg-border'>
       <div class='status-msg-bg'>
         <div class='status-msg-hidden'><data:navMessage/></div>
       </div>
-    </div>
+    </div-->
   </div>
   <div style='clear: both;'/>
   </b:if>
