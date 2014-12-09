@@ -1357,7 +1357,7 @@ body .ms-skin-default .ms-slide .ms-slide-vcbtn { top: auto; bottom: 60px; right
 	margin-bottom: 30px; padding-bottom: 5px; display: inline-block;
 	border-bottom-width: 2px; border-bottom-style: solid; letter-spacing: 2px; } 
 .related-post-widget{ margin-bottom: 20px; }
-.related-post-widget .related-post-widget-thumbnail{ max-width: 70px; float: left; margin-right: 15px; }
+.related-post-widget .related-post-widget-thumbnail{ max-width: 250px; float: left; margin-right: 15px; }
 .related-post-widget .related-post-widget-thumbnail img{ display: block; }
 .related-post-widget .related-post-widget-content{ overflow: hidden; margin-top: 5px; }
 .related-post-widget .related-post-widget-title{ font-size: 14px; margin-bottom: 6px; margin-top: 2px; }
@@ -6431,7 +6431,10 @@ function related_results_labels(c) {
             if (d.link[a].rel == "alternate") {
                 urls[titlesNum] = d.link[a].href;
                 timeR[titlesNum] = d.published.$t;
-                if ("media$thumbnail" in d) thumb[titlesNum] = d.media$thumbnail.url;
+				// if postText starts with <img>, find can't find it...
+                var postText = "<div>" + d.content.$t + "</div>";
+                var imgUrl = $(postText).find("img:first").attr("src")
+                if (imgUrl) thumb[titlesNum] = imgUrl;
                 else thumb[titlesNum] = "http://lh3.ggpht.com/--Z8SVBQZ4X8/TdDxPVMl_sI/AAAAAAAAAAA/jhAgjCpZtRQ/no-image.png";
                 titlesNum++;
                 break
@@ -6491,7 +6494,7 @@ function printRelatedLabels(a) {
             if (y != -1) urls[c] = urls[c] + "?m=0";
             if (commentYN == "yes") comments[c] = " - " + commentsNum[c];
             else comments[c] = "";
-            dw += '<div class="related-post-widget six columns"><div class="related-post-widget-thumbnail"><a href="' + urls[c] + '" ><img src="' + thumb[c].replace(/\/s72\-c/, "/s" + 250 + "") + '" alt="" width="150" height="150" /></a></div><div class="related-post-widget-content"><div class="related-post-widget-title"><a href="' + urls[c] + '" >' + titles[c] + '</a></div></div><div class="clear"></div></div>';
+            dw += '<div class="related-post-widget six columns"><div class="related-post-widget-thumbnail"><a href="' + urls[c] + '" ><img src="' + thumb[c].replace(/\/s72\-c/, "/s" + 250 + "") + '" alt="" width="180" height="180" /></a></div><div class="related-post-widget-content"><div class="related-post-widget-title"><a href="' + urls[c] + '" >' + titles[c] + '</a></div></div><div class="clear"></div></div>';
             if (c < titles.length - 1) c++;
             else c = 0;
             b++
