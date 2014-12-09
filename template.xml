@@ -3121,7 +3121,7 @@ html body{ min-width: 300px; }
 	.gdlr-item-title-head .gdlr-flex-next{ display: none; }
 }
 
-.body-wrapper.gdlr-pattern-background{ background-image: url("https://lh3.googleusercontent.com/-hHQgtgQctVA/VGpfGkiOfiI/AAAAAAAAI8c/qwmX-8ffUSg/I/background_light.jpg"); }
+.body-wrapper.gdlr-pattern-background{ background-color: white; }
 html.ltie9 body, body{ min-width: 1140px; } .container{ max-width: 1140px; } .gdlr-caption-wrapper .gdlr-caption-inner{ max-width: 1140px; }
 .gdlr-logo{ max-width: 510px; }
 .gdlr-logo{ padding-top: 60px; }
@@ -6527,82 +6527,82 @@ $(document).ready(function() {
 <b:widget id='Header1' locked='true' title='Point of [sju:] (Hlavička)' type='Header'>
   <b:includable id='main'>
 
-  <b:if cond='data:useImage'>
-    <b:if cond='data:imagePlacement == &quot;BEHIND&quot;'>
-      <!--
-      Show image as background to text. You can't really calculate the width
-      reliably in JS because margins are not taken into account by any of
-      clientWidth, offsetWidth or scrollWidth, so we don't force a minimum
-      width if the user is using shrink to fit.
-      This results in a margin-width's worth of pixels being cropped. If the
-      user is not using shrink to fit then we expand the header.
-      -->
-      <b:if cond='data:mobile'>
-          <div id='header-inner'>
-            <div class='titlewrapper' style='background: transparent'>
-              <h1 class='title' style='background: transparent; border-width: 0px'>
-                <b:include name='title'/>
-              </h1>
-            </div>
-            <b:include name='description'/>
-          </div>
-        <b:else/>
-          <div expr:style='&quot;background-image: url(\&quot;&quot; + data:sourceUrl + &quot;\&quot;); &quot;                        + &quot;background-position: &quot;                        + data:backgroundPositionStyleStr + &quot;; &quot;                        + data:widthStyleStr                        + &quot;min-height: &quot; + data:height                        + &quot;_height: &quot; + data:height                        + &quot;background-repeat: no-repeat; &quot;' id='header-inner'>
-            <div class='titlewrapper' style='background: transparent'>
-              <h1 class='title' style='background: transparent; border-width: 0px'>
-                <b:include name='title'/>
-              </h1>
-            </div>
-            <b:include name='description'/>
-          </div>
-        </b:if>
-    <b:else/>
-      <!--Show the image only-->
-      <div id='header-inner'>
-        <a expr:href='data:blog.homepageUrl' style='display: block'>
-          <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' style='display: block'/>
-        </a>
-        <!--Show the description-->
-        <b:if cond='data:imagePlacement == &quot;BEFORE_DESCRIPTION&quot;'>
-          <b:include name='description'/>
-        </b:if>
-      </div>
-    </b:if>
-  <b:else/>
-    <!--No header image -->
-    <div id='header-inner'>
-      <div class='titlewrapper'>
-        <h1 class='title'>
-          <b:include name='title'/>
-        </h1>
-      </div>
-      <b:include name='description'/>
-    </div>
-  </b:if>
-</b:includable>
+						  <b:if cond='data:useImage'>
+							<b:if cond='data:imagePlacement == &quot;BEHIND&quot;'>
+							  <!--
+							  Show image as background to text. You can't really calculate the width
+							  reliably in JS because margins are not taken into account by any of
+							  clientWidth, offsetWidth or scrollWidth, so we don't force a minimum
+							  width if the user is using shrink to fit.
+							  This results in a margin-width's worth of pixels being cropped. If the
+							  user is not using shrink to fit then we expand the header.
+							  -->
+							  <b:if cond='data:mobile'>
+								  <div id='header-inner'>
+									<div class='titlewrapper' style='background: transparent'>
+									  <h1 class='title' style='background: transparent; border-width: 0px'>
+										<b:include name='title'/>
+									  </h1>
+									</div>
+									<b:include name='description'/>
+								  </div>
+								<b:else/>
+								  <div expr:style='&quot;background-image: url(\&quot;&quot; + data:sourceUrl + &quot;\&quot;); &quot;                        + &quot;background-position: &quot;                        + data:backgroundPositionStyleStr + &quot;; &quot;                        + data:widthStyleStr                        + &quot;min-height: &quot; + data:height                        + &quot;_height: &quot; + data:height                        + &quot;background-repeat: no-repeat; &quot;' id='header-inner'>
+									<div class='titlewrapper' style='background: transparent'>
+									  <h1 class='title' style='background: transparent; border-width: 0px'>
+										<b:include name='title'/>
+									  </h1>
+									</div>
+									<b:include name='description'/>
+								  </div>
+								</b:if>
+							<b:else/>
+							  <!--Show the image only-->
+							  <div id='header-inner'>
+								<a expr:href='data:blog.homepageUrl' style='display: block'>
+								  <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' style='display: block'/>
+								</a>
+								<!--Show the description-->
+								<b:if cond='data:imagePlacement == &quot;BEFORE_DESCRIPTION&quot;'>
+								  <b:include name='description'/>
+								</b:if>
+							  </div>
+							</b:if>
+						  <b:else/>
+							<!--No header image -->
+							<div id='header-inner'>
+							  <div class='titlewrapper'>
+								<h1 class='title'>
+								  <b:include name='title'/>
+								</h1>
+							  </div>
+							  <b:include name='description'/>
+							</div>
+						  </b:if>
+						</b:includable>
   <b:includable id='description'>
-  <div class='descriptionwrapper'>
-    <p class='description'><span><data:description/></span></p>
-  </div>
-</b:includable>
+						  <div class='descriptionwrapper'>
+							<p class='description'><span><data:description/></span></p>
+						  </div>
+						</b:includable>
   <b:includable id='title'>
-  <b:if cond='data:blog.url == data:blog.homepageUrl'>
-    <data:title/>
-  <b:else/>
-    <a expr:href='data:blog.homepageUrl'><data:title/></a>
-  </b:if>
-</b:includable>
+						  <b:if cond='data:blog.url == data:blog.homepageUrl'>
+							<data:title/>
+						  <b:else/>
+							<a expr:href='data:blog.homepageUrl'><data:title/></a>
+						  </b:if>
+						</b:includable>
 </b:widget>
 </b:section>
-		<div class='gdlr-responsive-navigation dl-menuwrapper' id='gdlr-responsive-navigation'><button class='dl-trigger'>Open Menu</button><ul class='dl-menu gdlr-main-mobile-menu' id='menu-main-menu'>
-
-	<li class='menu-item menu-item-type-post_type'><a href='/'>Home</a></li>
-	<li class='menu-item menu-item-type-post_type'><a href='/search/label/photo'>Photo</a></li>
-	<li class='menu-item menu-item-type-post_type'><a href='/search/label/painting'>Painting</a></li>
-	<li class='menu-item menu-item-type-post_type'><a href='/search/label/travel'>Travel</a></li>
-	<li class='menu-item menu-item-type-post_type'><a href='http://pointofsju.blogspot.cz/p/about-point-of-sju.html'>About</a></li>
-		 
-</ul></div>						
+					<div class='gdlr-responsive-navigation dl-menuwrapper' id='gdlr-responsive-navigation'><button class='dl-trigger'>Open Menu</button>
+						<ul class='dl-menu gdlr-main-mobile-menu' id='menu-main-menu'>
+							<li class='menu-item menu-item-type-post_type'><a href='/'>Home</a></li>
+							<li class='menu-item menu-item-type-post_type'><a href='/search/label/photo'>Photo</a></li>
+							<li class='menu-item menu-item-type-post_type'><a href='/search/label/painting'>Painting</a></li>
+							<li class='menu-item menu-item-type-post_type'><a href='/search/label/travel'>Travel</a></li>
+							<li class='menu-item menu-item-type-post_type'><a href='http://pointofsju.blogspot.cz/p/about-point-of-sju.html'>About</a></li>
+						 </ul>	
+					 </div>						
 				</div>
 			</div>
 		</div> <!-- gdlr-logo-container -->
@@ -6613,22 +6613,22 @@ $(document).ready(function() {
 	<div class='gdlr-navigation-outer-wrapper' id='gdlr-navigation-outer-wrapper'>
 		<div class='gdlr-navigation-container container'>
 			<div class='gdlr-navigation-gimmick' id='gdlr-navigation-gimmick'/>
-			<div class='gdlr-navigation-wrapper'><nav class='gdlr-navigation' id='gdlr-main-navigation' role='navigation'><ul class='sf-menu gdlr-main-menu' id='menu-main-menu-1'>
-
-<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='/'>Home</a></li>
-
-<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='/search/label/photo'>Photo</a></li>
-
-<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='/search/label/painting'>Painting</a></li>
-
-<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='/search/label/travel'>Travel</a></li>
-
-<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='http://pointofsju.blogspot.cz/p/about-point-of-sju.html'>About</a></li>
-</ul></nav>	
-		<div class='top-search-button' id='top-search-button'>
-			<i class='icon-search'/>
-		</div>
-	<div class='clear'/></div>			<div class='clear'/>
+				<div class='gdlr-navigation-wrapper'>
+					<nav class='gdlr-navigation' id='gdlr-main-navigation' role='navigation'>
+						<ul class='sf-menu gdlr-main-menu' id='menu-main-menu-1'>
+							<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='/'>Home</a></li>
+							<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='/search/label/photo'>Photo</a></li>
+							<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='/search/label/painting'>Painting</a></li>
+							<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='/search/label/travel'>Travel</a></li>
+							<li class='menu-item menu-item-type-post_type gdlr-normal-menu'><a href='http://pointofsju.blogspot.cz/p/about-point-of-sju.html'>About</a></li>
+						</ul>
+					</nav>	
+					<div class='top-search-button' id='top-search-button'>
+						<i class='icon-search'/>
+					</div>
+					<div class='clear'/>
+				</div>			
+				<div class='clear'/>
 		</div>	
 	</div>	
 	<div id='gdlr-navigation-substitute'/>
@@ -6640,7 +6640,7 @@ $(document).ready(function() {
 			<i class='icon-search'/>
           <input class='style-2' id='searchsubmit2' type='submit' value=''/>
 			<div class='search-text' id='search-text2'>
-				<input autocomplete='off' data-default='Type keywords...' name='q' type='text' value=''/><input type='hidden' value='max-results=6'/>
+				<input autocomplete='off' data-default='Type keywords...' name='q' type='text' value=''/><input type='hidden' value='max-results=3'/>
 			</div>
 			<div class='clear'/>
 		</form>
@@ -7867,7 +7867,7 @@ head.appendChild(script);
   </b:widget>
 </b:section>
 <b:section class='footer-column four columns' id='footer-widget-3'>
-  <b:widget id='HTML3' locked='false' title='Gallery' type='HTML'>
+  <b:widget id='HTML3' locked='false' title='Instagram' type='HTML'>
     <b:includable id='main'>
   <!-- only display title if it's non-empty -->
   <b:if cond='data:title != &quot;&quot;'>
