@@ -514,7 +514,8 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.3; margin-bottom: 18px; font-weight: 400
 
 .ie7 .sf-mega-section.three{ width: 24%; }
 
-.widget{ margin: 0px 15px 20px; min-height: 1px; }
+.widget.Header{ margin: 0px 15px 20px; min-height: 1px; }
+.widget{ margin: 0px 15px 20px; min-height: 370px; }
 .gdlr-full-size-wrapper .widget-no-space{ margin-bottom: 0px; }
 .widget-no-space{ margin: 0px 20px 40px; }
 .widget-no-space .widget{ margin: 0px; }
@@ -681,7 +682,7 @@ margin-left:0;
 color:#333;
 font-size:14px;
 float: right;
-font-family: Verdana, sans-serif;
+font-family: Cardo, Verdana, sans-serif;
 }
 .comments .comments-content .comment-header,
 .comments .comments-content .comment-content {
@@ -2992,7 +2993,7 @@ html body{ min-width: 300px; }
 	.flex-direction-nav .flex-prev, .flex-direction-nav .flex-next { opacity: 1; }
 	
 	/* header */
-	.gdlr-logo { margin: 0px auto !important; padding-top: 20px; padding-bottom: 20px; float: none; }
+	.gdlr-logo { margin: 0px auto !important; padding-top: 10px; padding-bottom: 10px; float: none; }
 	.top-search-button, .gdlr-fixed-nav{ display: none; }
 	
 	/* post slider */
