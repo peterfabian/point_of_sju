@@ -4,7 +4,7 @@
 <!--<![endif]-->
   <head>
     <b:if cond='data:blog.isMobile'>
-      <meta content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0' name='viewport'/>
+      <meta content='width=device-width,initial-scale=0.6,minimum-scale=0.6,maximum-scale=1.0' name='viewport'/>
     <b:else/>
       <meta content='width=1100' name='viewport'/>
     </b:if>
@@ -436,8 +436,8 @@ a [class^="icon-"],a [class*=" icon-"]{cursor:pointer;}
 .my-simple-gallery figure {
   display: block;
   float: left;
-  margin: 0 5px 5px 0;
-  width: 150px;
+  margin: 3px 3px 3px 2px;
+  width: 160px;
 }
 .my-simple-gallery figcaption {
   display: none;
@@ -3197,7 +3197,8 @@ h6{ font-size: 16px; }
 .gdlr-main-menu > li > .sf-mega .sf-mega-section-inner > a { color: #ffffff; }
 .gdlr-main-menu > li > .sf-mega .sf-mega-section-inner > a:hover, .gdlr-main-menu > li > .sf-mega .sf-mega-section-inner.current-menu-item > a, .gdlr-main-menu > li > .sf-mega .sf-mega-section-inner.current-menu-ancestor > a { color: #ffffff; }
 #gdlr-responsive-navigation.dl-menuwrapper button { background-color: #cccccc; }
-#gdlr-responsive-navigation.dl-menuwrapper button:hover, #gdlr-responsive-navigation.dl-menuwrapper button.dl-active, #gdlr-responsive-navigation.dl-menuwrapper ul{ background-color: #727272; }
+#gdlr-responsive-navigation.dl-menuwrapper button:hover, #gdlr-responsive-navigation.dl-menuwrapper button.dl-active, #gdlr-responsive-navigation.dl-menuwrapper ul{ background-color: #727272; font-family: "Bree Serif"; }
+html .blog-pager-older-link, html .blog-pager-newer-link{font-size:100%;!important}
 .top-search-button i{ color: #a0a0a0; }
 .gdlr-nav-search-form{ background-color: #272727; }
 .gdlr-nav-search-form i, .gdlr-nav-search-form input[type="text"]{ color: #f1f1f1; }
@@ -6525,7 +6526,7 @@ function printRelatedLabels(a) {
     var y = a.indexOf("?m=0");
     if (y != -1) a = a.replace(/\?m=0/g, "");
     for (var b = 0; b < urls.length; b++)
-        if (urls[b] == a) {
+        if (urls[b].replace(/\.com\//, "").replace(/\.cz\//, "") == a.replace(/\.com\//, "").replace(/\.cz\//, "")) {
             urls.splice(b, 1);
             titles.splice(b, 1);
             timeR.splice(b, 1);
@@ -6557,6 +6558,62 @@ $(document).ready(function() {
     }, 3000)
 });
 //]]>
+</script>
+
+<script type='text/javascript'>
+	//<![CDATA[
+function prepareFlickrAlbum(setId, customOrder){
+	$.getJSON( "https://api.flickr.com/services/rest/?jsoncallback=?", 
+	{
+		method: "flickr.photosets.getPhotos",
+		api_key:"92da12e7f9430472a8ce2276d8bfb3e5",
+		format: "json",
+		photoset_id: setId,
+		extras: "o_dims, url_k, url_s, url_m, url_o"
+	})
+	.done(function( data ) {
+		if (data.stat === "fail") {
+			console.log( "failed retrieving album with id " + setId );
+			return;
+		}
+		console.log( "success retrieving album " + setId );
+	  // Start putting together the HTML string
+		var htmlString = "";
+		
+		// Now start cycling through our array of Flickr photo details
+		var iteratorLength = data.photoset.photo.length
+		if (typeof customOrder === 'undefined') {
+			// do nothing
+		}
+		else {
+			iteratorLength = customOrder.length
+		}
+		for (var i = 0; i < iteratorLength; i++){
+			var index = i;
+			
+			if (typeof customOrder === 'undefined') {
+				// do nothing
+			}
+			else {
+				index = customOrder.indexOf(i)
+			}
+			var photo = data.photoset.photo[index]
+			
+			htmlString += '<figure itemscope itemtype="http://schema.org/ImageObject">';
+			htmlString += '  <a href="' + photo.url_k + '" itemprop="contentUrl" data-size="' + photo.width_k + 'x' + photo.height_k + '">';
+			htmlString += '	  <img src="' + photo.url_m + '" itemprop="thumbnail" alt="' + photo.title + '" />';
+			htmlString += '  </a>';
+			htmlString += '  <figcaption itemprop="caption description">' + photo.title + '</figcaption>';
+			htmlString += '</figure>';
+			
+		}
+		
+		// Pop our HTML in the #images DIV
+		$('#images').html(htmlString);
+	});
+};
+//]]>
+
 </script>
 
 	
@@ -6814,7 +6871,7 @@ $(document).ready(function() {
 <b:section class='main' id='main' showaddelement='no'>
   <b:widget id='Blog1' locked='true' title='Blogové príspevky' type='Blog'>
     <b:includable id='main' var='top'>
-  <b:if cond='data:mobile == &quot;false&quot;'>
+  <!--b:if cond='data:mobile == &quot;false&quot;'-->
 
     <!-- posts -->
     <div class='blog-posts hfeed'>
@@ -6892,9 +6949,9 @@ $(document).ready(function() {
       </script>
     </b:if>
 
-  <b:else/>
+  <!--b:else/>
     <b:include name='mobile-main'/>
-  </b:if>
+  </b:if-->
 
   <b:if cond='data:top.showDummy'>
     <data:top.dummyBootstrap/>
@@ -8222,7 +8279,9 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 		
 		// After PhotoSwipe is closed
 		// clean up your stuff here
-		gallery.listen('close', function() { document.getElementById("gdlr-navigation-outer-wrapper").setAttribute("style", "top: 0px;") });
+		gallery.listen('close', function() { 
+		document.getElementById("gdlr-navigation-outer-wrapper").setAttribute("style", "top: 0px;");
+		});
 	};
 
 	// loop through all gallery elements and bind events
