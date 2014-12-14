@@ -428,6 +428,7 @@ a [class^="icon-"],a [class*=" icon-"]{cursor:pointer;}
 .my-simple-gallery {
   width: 100%;
   float: left;
+  margin-bottom: 20px;
 }
 .my-simple-gallery img {
   width: 100%;
@@ -6577,7 +6578,7 @@ $(document).ready(function() {
 
 <script type='text/javascript'>
 	//<![CDATA[
-function prepareFlickrAlbum(setId, customOrder){
+function prepareFlickrAlbum(setId, customOrder, destinationId){
 	$.getJSON( "https://api.flickr.com/services/rest/?jsoncallback=?", 
 	{
 		method: "flickr.photosets.getPhotos",
@@ -6610,7 +6611,7 @@ function prepareFlickrAlbum(setId, customOrder){
 				// do nothing
 			}
 			else {
-				index = customOrder.indexOf(i)
+				index = customOrder[i]
 			}
 			var photo = data.photoset.photo[index]
 			
@@ -6624,7 +6625,7 @@ function prepareFlickrAlbum(setId, customOrder){
 		}
 		
 		// Pop our HTML in the #images DIV
-		$('#images').html(htmlString);
+		$('#' + destinationId).html(htmlString);
 	});
 };
 //]]>
