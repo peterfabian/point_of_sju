@@ -6466,9 +6466,10 @@ function readmore(a) {
     imgtag = "";
     ifrtag = "";
     img = p.getElementsByTagName("img");
-    ifr = p.getElementsByTagName("iframe");
-    if (ifr.length >= 1) ifrtag = '<div class="blog-content-wrapper" ><div class="gdlr-blog-thumbnail gdlr-video"><iframe width="750px" height="330px" src="' + ifr[0].src + '" frameborder="0" allowfullscreen style="display:block;"></iframe></div>';
-    else if (img.length >= 1) imgtag = '<div class="blog-content-wrapper" ><div class="gdlr-blog-thumbnail"><a href="' + post_url + '"> <img src="' + img[0].src + '" width="750px" height="330px" /></a><div class="gdlr-sticky-banner">' + time + '</div></div>';
+    ifr = "" // p.getElementsByTagName("iframe") // video looks funny, just look for pics;
+    // if (ifr.length >= 1) ifrtag = '<div class="blog-content-wrapper" ><div class="gdlr-blog-thumbnail gdlr-video"><iframe width="750px" height="330px" src="' + ifr[0].src + '" frameborder="0" allowfullscreen style="display:block;"></iframe></div>';
+    //else 
+	if (img.length >= 1) imgtag = '<div class="blog-content-wrapper" ><div class="gdlr-blog-thumbnail"><a href="' + post_url + '"> <img src="' + img[0].src + '" width="750px" height="330px" /></a><div class="gdlr-sticky-banner">' + time + '</div></div>';
     else imgtag = '<div class="blog-content-wrapper" >';
     p.innerHTML = ifrtag + imgtag + '<div class="blog-content-inner-wrapper"><header class="post-header"><h3 class="gdlr-blog-title"><a href="' + post_url + '">' + post_title + '</a></h3><div class="gdlr-blog-info gdlr-title-font gdlr-info"><div class="blog-info blog-tag"><i class="icon-tags"></i> ' + label + '</div><div class="blog-info blog-author"><i class="icon-user"></i><a href="' + author_url + '" title="Posts by ' + author_name + '" rel="author">' + author_name + '</a></div><span class="gdlr-seperator">/</span><div class="blog-info blog-comments"><i class="icon-comments-alt"></i><a href="' + post_url + '" >' + comment + ' Comments</a></div><div class="clear"></div></div></header><!-- entry-header --><div class="gdlr-blog-content"><p>' + stripTags(p.innerHTML, b) + '</p><p> <a href="' + post_url + '" class="more-link"><span class="gdlr-button with-border excerpt-read-more">Read More</span></a></p></div></div> </div>'
 }
